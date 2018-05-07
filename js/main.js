@@ -3,8 +3,17 @@ redoStack = [];
 //TODO: delete oldest item once stack gets to MAX_UNDO/MAX_REDO
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
-var context = new AudioContext();
-
+var context = null; //delaying creation until first user gesture
+var initContextEvents = ['touchstart', 'mousedown', 'contextmenu'];
+function initContext() {
+    context = new AudioContext();
+    for (const event of initContextEvents) {
+        window.removeEventListener(event, initContext, true);
+    }
+}
+for (const event of initContextEvents) {
+    window.addEventListener(event, initContext, true);
+}
 
 // for help menu box, toggles display on/off
 function toggle(obj) {

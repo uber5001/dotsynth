@@ -171,7 +171,7 @@ function Dot(definition, x, y) {
 	function Arc(parent, start, end, definition) {
 		var selfArc = this;
 		this.definition = definition;
-//		this.paramName = definition.name;
+		// this.paramName = definition.name;
 		
 		var clipPathId = CLIP_PATH_ID++;
 		this.gElement = document.createElementNS(NS, 'g');

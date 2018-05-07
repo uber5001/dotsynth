@@ -11,7 +11,7 @@ dotMenuEvent = function (e) {
         var size = (radius + DOT_RADIUS + GAP_WIDTH) * 2;
 
         function pxToMm(val) {
-            return val / ( newDotMenu.offsetHeight / size );
+            return val / ( newDotMenu.getBoundingClientRect().height / size );
         }
 
         newDotMenu.setAttribute('width', size + UNITS);
@@ -60,8 +60,8 @@ dotMenuEvent = function (e) {
         this.isVisible = true;
         newDotMenu.classList.remove('hidden');
         //TODO: make it show properly!
-        newDotMenu.style.left = e.pxX - newDotMenu.offsetWidth / 2 + "px";
-        newDotMenu.style.top = e.pxY - newDotMenu.offsetHeight / 2 + "px";
+        newDotMenu.style.left = e.pxX - newDotMenu.getBoundingClientRect().width / 2 + "px";
+        newDotMenu.style.top = e.pxY - newDotMenu.getBoundingClientRect().height / 2 + "px";
     }
 };
 

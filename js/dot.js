@@ -349,7 +349,7 @@ function Dot(definition, x, y) {
 			onTapStart: function(e) {modifyValue(e.pxX, e.pxY);},
 			onDragMove: function(e) {modifyValue(e.pxX, e.pxY);},
 			onTapEnd:   function(e) {modifyValue(e.pxX, e.pxY);}
-		}, true);
+		}, false);
 	}
 	Physics.add(this);
 
@@ -458,9 +458,5 @@ function updateArcsClipPath() {
  * helper func to get pos of element
  */
 function positionOf(element) {
-	if (element == document.body) return {x:0, y:0};
-	var position = positionOf(element.offsetParent);
-	position.x += element.offsetLeft;
-	position.y += element.offsetTop;
-	return position;
+	return element.parentElement.getBoundingClientRect()
 }
